@@ -42,7 +42,7 @@ jobs:
             "CloseConsoleOnFinish": true
           },
           "Format": {
-            "Fit": true,
+            "Fit": false,
             "Json": true,
             "Tcx": false,
             "SaveLocalCopy": ${{ github.event.inputs.saveLocalCopy || true }},
@@ -93,5 +93,6 @@ jobs:
         name: output
         path: ${{ env.OUTPUT_DIR }}
         if-no-files-found: error
+
 
 
