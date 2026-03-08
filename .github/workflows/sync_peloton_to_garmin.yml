@@ -43,11 +43,11 @@ jobs:
           },
           "Format": {
             "Fit": true,
-            "Json": false,
+            "Json": true,
             "Tcx": false,
-            "SaveLocalCopy": ${{ github.event.inputs.saveLocalCopy || false }},
-            "IncludeTimeInHRZones": false,
-            "IncludeTimeInPowerZones": false,
+            "SaveLocalCopy": ${{ github.event.inputs.saveLocalCopy || true }},
+            "IncludeTimeInHRZones": true,
+            "IncludeTimeInPowerZones": true,
             "StackedWorkouts": {
               "AutomaticallyStackWorkouts": false,
               "MaxAllowedGapSeconds": 300
@@ -93,3 +93,4 @@ jobs:
         name: output
         path: ${{ env.OUTPUT_DIR }}
         if-no-files-found: error
+
