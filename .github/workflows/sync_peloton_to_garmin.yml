@@ -90,15 +90,16 @@ jobs:
       if: ${{ github.event.inputs.saveLocalCopy == 'true' }}
       run: |
         cd ${{ env.OUTPUT_DIR }}
-        zip -r ../workout_data.zip .
+        tar -cvzf ../workout_data.tar.gz .
       
     - name: ⤴ Upload output directory
       uses: actions/upload-artifact@v4
       if: ${{ github.event.inputs.saveLocalCopy == 'true' }}
       with:
         name: workout-data
-        path: /app/workout_data.zip
+        path: /app/workout_data.tar.gz
         if-no-files-found: error
+
 
 
 
