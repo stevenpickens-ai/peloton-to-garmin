@@ -86,13 +86,20 @@ jobs:
         P2G_GARMIN__PASSWORD: ${{ secrets.P2G_GARMIN__PASSWORD }}
         TZ: America/Chicago
 
+    - name: 📦 Archive output
+      if: ${{ github.event.inputs.saveLocalCopy == 'true' }}
+      run: |
+        cd ${{ env.OUTPUT_DIR }}
+        zip -r ../workout_data.zip .
+      
     - name: ⤴ Upload output directory
       uses: actions/upload-artifact@v4
       if: ${{ github.event.inputs.saveLocalCopy == 'true' }}
       with:
-        name: output
-        path: ${{ env.OUTPUT_DIR }}
+        name: workout-data
+        path: /app/workout_data.zip
         if-no-files-found: error
+
 
 
 
